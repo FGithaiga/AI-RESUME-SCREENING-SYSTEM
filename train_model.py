@@ -8,13 +8,13 @@ from sklearn.preprocessing import LabelEncoder
 # Load dataset
 df = pd.read_csv("Data/Resume_Data.csv")
 
-# ✔ REMOVE EMPTY VALUES
+# REMOVE EMPTY VALUES
 df = df.dropna(subset=["Feature", "Category"])
 
-# OPTIONAL: reset index
+# reset index
 df = df.reset_index(drop=True)
 
-# ✔ CORRECT COLUMN USAGE
+# CORRECT COLUMN USAGE
 X = df["Feature"]
 y = df["Category"]
 
@@ -27,7 +27,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y_encoded, test_size=0.2, random_state=42
 )
 
-# ✔ IMPORTANT: FIT TF-IDF PROPERLY
+# FIT TF-IDF PROPERLY
 tfidf = TfidfVectorizer(stop_words="english")
 X_train_vec = tfidf.fit_transform(X_train)
 
@@ -40,4 +40,4 @@ pickle.dump(model, open("resume_classifier.pkl", "wb"))
 pickle.dump(tfidf, open("tfidf.pkl", "wb"))
 pickle.dump(encoder, open("label_encoder.pkl", "wb"))
 
-print("✅ Model trained successfully!")
+print("Model has been trained successfully!")
