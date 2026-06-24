@@ -6,3 +6,5 @@ scikit-learn==1.9.0
 scipy
 joblib
 PyPDF2==3.0.1
+python-docx
+textract
